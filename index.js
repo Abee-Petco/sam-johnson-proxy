@@ -1,5 +1,6 @@
 const express = require('express');
 const serveStatic = require('serve-static');
+require('newrelic');
 // const morgan = require('morgan');
 
 const server = express();
