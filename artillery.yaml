@@ -1,9 +1,18 @@
 config:
-  target: "http://localhost:3000"
+  target: 'http://localhost:3000'
+  http:
+    pool: 10
   phases:
-    - duration: 300
-      arrivalRate: 300
+    - duration: 120
+      arrivalRate: 1
+      rampTo: 10
+      name: "Warm Up"
+    - duration: 120
+      arrivalRate: 10
+      name: "Sustain Max"
 scenarios:
   - flow:
-    - get:
-        url: "/?={{$randomNumber(100, 10000100)}}"
+      - loop:
+          - get:
+              url: '/?={{$randomNumber(100, 10000100)}}'
+        count: 100
