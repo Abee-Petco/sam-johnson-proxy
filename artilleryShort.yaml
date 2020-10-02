@@ -1,0 +1,20 @@
+config:
+  target: 'http://localhost:3002'
+  http:
+    pool: 10
+  phases:
+    - duration: 10
+      arrivalRate: 1
+      name: "Warm Up"
+    - duration: 20
+      arrivalRate: 5
+      name: "Midpoint"
+    - duration: 30
+      arrivalRate: 10
+      name: "Sustain Max"
+scenarios:
+  - flow:
+      - loop:
+          - get:
+              url: '/?={{$randomNumber(100, 10000100)}}'
+        count: 100

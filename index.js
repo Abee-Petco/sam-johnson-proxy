@@ -1,10 +1,11 @@
 const express = require('express');
 const serveStatic = require('serve-static');
-const morgan = require('morgan');
+require('newrelic');
+// const morgan = require('morgan');
 
 const server = express();
 
-server.use(morgan('dev'));
+// server.use(morgan('dev'));
 server.use(serveStatic('./client/'));
 
 server.get('/product', (req, res) => {
