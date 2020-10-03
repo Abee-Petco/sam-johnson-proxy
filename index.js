@@ -21,7 +21,9 @@ server.get("/product", (req, res) => {
     res.status(404).send("itemID invalid");
   } else {
     axios
-      .get(`http://3.133.84.89/component/?itemId=${itemIdNumber}`)
+      .get(
+        `http://ec2-3-19-16-18.us-east-2.compute.amazonaws.com/component/?itemId=${itemIdNumber}`,
+      )
       .then((componentData) => {
         const { windowData, serviceApp } = componentData.data;
         res.send(`
@@ -83,7 +85,7 @@ server.get("/product", (req, res) => {
             observer.observe(targetNode, config);
           </script>
         
-          <script crossorigin src="http://3.133.84.89/bundle.js" ></script>
+          <script crossorigin src="http://ec2-3-19-16-18.us-east-2.compute.amazonaws.com/bundle.js" ></script>
         </html>
         `);
       })
