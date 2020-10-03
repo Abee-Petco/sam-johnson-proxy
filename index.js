@@ -12,6 +12,7 @@ const server = express();
 server.get("/product", (req, res) => {
   const { itemID } = req.query;
   const itemIdNumber = Number.parseInt(itemID, 10);
+  console.log(itemID);
 
   if (
     itemIdNumber < 100 ||
@@ -26,6 +27,7 @@ server.get("/product", (req, res) => {
       )
       .then((componentData) => {
         const { windowData, serviceApp } = componentData.data;
+        console.log(windowData);
         res.send(`
         <!DOCTYPE html>
         <html>
