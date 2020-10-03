@@ -4,6 +4,7 @@
   "description": "A PetToyCo proxy server that correctly mounts the individual PetToyCo services",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "server": "nodemon index.js",
     "lint": "eslint . --ext .js"
   },

@@ -38,10 +38,6 @@ server.get("/product", (req, res) => {
             <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.0/react-redux.min.js"></script>
             <script crossorigin src="https://momentjs.com/downloads/moment.min.js"></script>
             <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-            <!-- <link rel="stylesheet" href="http://18.224.229.28:3003/style.css"></link> -->
-            <!-- <link rel="stylesheet" href="http://127.0.0.1:3003/style.css"></link> -->
-            <!-- <link rel="stylesheet" href="http://18.224.229.28:3006/style.css"></link> -->
-            <!-- <link rel="stylesheet" href="http://localhost:3006/style.css"></link> -->
             <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
           </head>
           <body >
