@@ -12,7 +12,6 @@ const server = express();
 server.get("/product", (req, res) => {
   const { itemID } = req.query;
   const itemIdNumber = Number.parseInt(itemID, 10);
-  console.log(itemIdNumber);
 
   if (
     itemIdNumber < 100 ||
