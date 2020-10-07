@@ -22,6 +22,7 @@ const redisMiddleware = (req, res, next) => {
   let key = '__expIress' + req.originalUrl || req.url;
   client.get(key, function (err, reply) {
     if (reply) {
+      console.log('from cache!');
       res.send(reply);
     } else {
       res.sendResponse = res.send;
