@@ -26,7 +26,7 @@ const redisMiddleware = (req, res, next) => {
     } else {
       res.sendResponse = res.send;
       res.send = (body) => {
-        typeof body === 'string' ? client.setex(key, 300, body) : client.setex(key, 300, JSON.stringify(body));
+        typeof body === 'string' ? client.set(key, body) : client.set(key, JSON.stringify(body));
         res.sendResponse(body);
       };
       next();
