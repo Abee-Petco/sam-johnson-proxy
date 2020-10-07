@@ -22,7 +22,7 @@ services:
     volumes:
       - ./data:/data
       - ./redis.conf:/usr/local/etc/redis.conf
-    command: ["redis-server", "--bind", "redis", "--port", "6379"]
+    command: redis-cli -h redis
     environment: 
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
