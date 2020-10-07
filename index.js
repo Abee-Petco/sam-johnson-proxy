@@ -7,7 +7,7 @@ require("newrelic");
 const server = express();
 
 // server.use(morgan('dev'));
-// server.use(serveStatic("./client/"));
+server.use(serveStatic("./client/loaderio/"));
 
 server.get("/product", (req, res) => {
   const { itemID } = req.query;
