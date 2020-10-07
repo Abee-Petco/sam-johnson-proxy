@@ -9,6 +9,21 @@ services:
     working_dir: /Users/samjohnson/Documents/hrfiles/petco/nick-proxy-server
     ports:
       - "80:3000"
-    command: bash -c "npm install && npm start"
+    links:
+      - "redis"
+    command: bash -c "wait-for-it.sh redis:6379 && npm install && npm start"
     volumes:
+      - ./wait-for-it.sh:/usr/local/bin/wait-for-it.sh
       - ./:/Users/samjohnson/Documents/hrfiles/petco/nick-proxy-server
+
+  redis:
+    restart: always
+    image: redis:latest
+    volumes:
+      - ./data:/data
+      - ./redis.conf:/usr/local/etc/redis.conf
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]
+    environment: 
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
