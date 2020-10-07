@@ -1,7 +1,7 @@
 const express = require("express");
 const serveStatic = require("serve-static");
 const axios = require("axios");
-require("newrelic");
+// require("newrelic");
 // const morgan = require('morgan');
 
 const server = express();
