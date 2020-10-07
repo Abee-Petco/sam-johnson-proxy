@@ -3,13 +3,38 @@ const serveStatic = require("serve-static");
 const axios = require("axios");
 // require("newrelic");
 // const morgan = require('morgan');
+const redis = require('redis');
+let client;
 
 const server = express();
 
 // server.use(morgan('dev'));
 server.use(serveStatic("./client/loaderio/"));
 
-server.get("/product", (req, res) => {
+//redis caching middleware
+if (process.env.node_env === 'production') {
+  client = redis.createClient({ host: 'redis' });
+} else {
+  client = redis.createClient();
+}
+
+const redisMiddleware = (req, res, next) => {
+  let key = '__expIress' + req.originalUrl || req.url;
+  client.get(key, function (err, reply) {
+    if (reply) {
+      res.send(reply);
+    } else {
+      res.sendResponse = res.send;
+      res.send = (body) => {
+        client.setex(key, 300, JSON.stringify(body));
+        res.sendResponse(body);
+      };
+      next();
+    }
+  });
+};
+
+server.get("/product", redisMiddleware, (req, res) => {
   const { itemID } = req.query;
   const itemIdNumber = Number.parseInt(itemID, 10);
 
