@@ -47,7 +47,7 @@ server.get("/product", redisMiddleware, (req, res) => {
   } else {
     axios
       .get(
-        `http://ec2-3-19-16-18.us-east-2.compute.amazonaws.com/component/?itemId=${itemIdNumber}`,
+        `http://localhost:8080/component/?itemId=${itemIdNumber}`,
       )
       .then((componentData) => {
         const { windowData, serviceApp } = componentData.data;
