@@ -4,4 +4,4 @@
 docker build -t lobal .
 
 ## RUN
-docker run -p 8080:8080 lobal 
+docker run -itd -p 8080:8080 lobal 

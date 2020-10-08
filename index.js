@@ -2,13 +2,13 @@ const express = require("express");
 const serveStatic = require("serve-static");
 const axios = require("axios");
 // require("newrelic");
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const redis = require('redis');
 let client;
 
 const server = express();
 
-// server.use(morgan('dev'));
+server.use(morgan('combined'));
 server.use(serveStatic("./client/loaderio/"));
 
 //redis caching middleware
