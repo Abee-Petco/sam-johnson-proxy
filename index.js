@@ -8,7 +8,7 @@ let client;
 
 const server = express();
 
-server.use(morgan('combined'));
+server.use(morgan('dev'));
 server.use(serveStatic("./client/loaderio/"));
 
 //redis caching middleware
