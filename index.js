@@ -47,7 +47,7 @@ server.get("/product", (req, res) => {
   } else {
     axios
       .get(
-        `http://3.16.155.15:8080/component/?itemId=${itemIdNumber}`,
+        `http://3.16.155.15/component/?itemId=${itemIdNumber}`,
       )
       .then((componentData) => {
         const { windowData, serviceApp } = componentData.data;
@@ -60,7 +60,7 @@ server.get("/product", (req, res) => {
           <body>
             <div id="description" style="margin: 0 0 20px 0;">${serviceApp}</div>
           </body>
-          <script crossorigin src="http://3.132.55.48:8080/bundle.js" ></script>
+          <script crossorigin src="http://3.16.155.15/bundle.js" ></script>
         </html>
         `);
       })
