@@ -10,3 +10,4 @@ bashScript5.sh
 bashScript6.sh
 sdc.proxy_0.pem
 newrelic_agent.log
+loadBalancer
